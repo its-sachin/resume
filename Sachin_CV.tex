@@ -20,6 +20,7 @@
 \input{glyphtounicode}
 \usepackage{array}
 \usepackage{titlesec}
+\usepackage{pifont}
 
 
 %----------FONT OPTIONS----------
@@ -66,36 +67,46 @@
   }
 }
 
-\newcommand{\expheading}[4]{
+\newcommand{\headingStart}{
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+}
+
+\newcommand{\schosItem}[3]{
+  \item
+    \headingStart
+      \textbf{#1}: #2 & #3 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\expHeading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \headingStart
       \underline{\textbf{#1, #2}}: \textit{#3} & #4 \\
-      % \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
+\newcommand{\porHeading}[3]{
+  \vspace{-2pt}\item
+    \headingStart
+      \textbf{#1, #2}: & #3 \\
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeProjectHeading}[3]{
+\newcommand{\projectHeading}[3]{
     \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \headingStart
       \underline{\textbf{#1}} $|$ \textit{#2}: & #3 \\
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.05in, rightmargin=0in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, rightmargin=0in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\listStart}[2]
+  {\begin{itemize}[leftmargin=#1in, rightmargin=0in, label={#2}]}
+\newcommand{\listEnd}{\end{itemize}}
+\newcommand{\itemListStart}[1]
+  {\begin{itemize}[leftmargin=#1in, rightmargin=0in]}
+\newcommand{\itemListEnd}{\end{itemize}\vspace{-5pt}}
 
 
 
@@ -156,70 +167,180 @@
 
 %-----------EXPERIENCE-----------
 \section{Work Experience}
-  \resumeSubHeadingListStart
+  \listStart{0.05}{}
 
-    \expheading
+    \expHeading
       {Mastercard Gurugram}
       {AI Intern}
       {Entity driven Representation learning }
       {Jun, 2022 - July, 2022}
-      \resumeItemListStart
+      \itemListStart{0.2}
         \resumeItem{Designed Entity based feature representation of transactional data using LSTM, usable on any downstream problem}
         \resumeItem{Utlized four party model of mastercard to design enitities and get transaction level and card level embeddings}
         \resumeItem{Used hierarchical softmax for extreme class classification, gross domestic value and TPP problem for testing}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
+      \itemListEnd
+  \listEnd
+
+  
+%
+%-----------SCHOSLASTIC ACHIEVEMENTS------
+\section{Schoslastic Achievements}
+\itemListStart{0.2}
+  \schosItem
+    {Department Change}
+    {One of 13 students in IITD to secure discipline change to CSE on a merit basis}
+    {2020}
+  \schosItem
+    {Outstanding Grade}
+    {One of 29 students in IITD to score 10 CGPA in every course in frst semester }
+    {2019}
+  \schosItem
+    {IITD Semester Merit Award}
+    {Conferred for ranking amongst top 7\% students in frst sem IITD  }
+    {2019}    
+  \schosItem
+    {JEE Advanced}
+    {Secured All India Rank 168(OB) among 0.22 million candidates}
+    {2019}    
+  \schosItem
+    {JEE Mains}
+    {Secured All India Rank 190(OB) among 1.15 million candidates}
+    {2019} 
+  \schosItem
+    {Olympiads}
+    {School Gold Medalist and 2nd level selection in SOF Science and Mathematics Olympiad }
+    {2017} 
+  \itemListEnd
 
 
 %-----------PROJECTS-----------
 \section{Projects}
-    \resumeSubHeadingListStart
+    \listStart{0.05}{}
 
-      \resumeProjectHeading
+      \projectHeading
         {Driver Profiling}
         {Prof. Rijurekha Sen}
         {Dec, 2021 - Apr, 2022}
-        \resumeItemListStart
+        \itemListStart{0.2}
           \resumeItem{Detected rash driving on Delhi buses by profiling driver behavior using supervised learning on unlabelled data}
           \resumeItem{Simulated the GPS data on Unity in real-time to visualize data and performed anomaly detection of faulty sensors}
           \resumeItem{Developed heuristics to label the ground truth and used labeled data to perform classification using random forest}
-        \resumeItemListEnd
+        \itemListEnd
 
 
-      \resumeProjectHeading
+      \projectHeading
         {Shell based Operating System}
         {Prof. Sorav Bansal}
         {Feb, 2022 - Apr, 2022}
-        \resumeItemListStart
+        \itemListStart{0.2}
           \resumeItem{Developed a shell-based kernel from scratch that takes input from I/O devices and perform basic math operations}
           \resumeItem{Implemented Coroutines, Fibres, Non-Preemptive and Preemptive scheduling and multi-core functionality}
-        \resumeItemListEnd
+        \itemListEnd
 
-      \resumeProjectHeading
+      \projectHeading
         {Template Search in image}
         {Prof. Subodh Kumar}
         {Mar, 2022 - Apr, 2022}
-        \resumeItemListStart
+        \itemListStart{0.2}
           \resumeItem{Implemented an algorithm to determine the position of potentially rotated query image on input image concurrently}
           \resumeItem{Used CUDA for parallel computation, bilinear interpolation to compute rotated coordinates, and RMSD for error}
-        \resumeItemListEnd
+        \itemListEnd
+
+      \projectHeading
+        {Restaurant dashboard}
+        {Prof. Maya Ramanath}
+        {Feb, 2022 - Mar, 2022}
+        \itemListStart{0.2}
+          \resumeItem{A web-based dashboard for restaurants that allows users to log in with diferent levels and query or edit data}
+          \resumeItem{Developed front end using HTML and CSS, back-end using fask and PSQL to support highly customizable queries}
+        \itemListEnd
+
+      \projectHeading
+        {SML Compiler}
+        {Prof. S.Arun Kumar}
+        {Mar, 2021 - May, 2021}
+        \itemListStart{0.2}
+          \resumeItem{Developed a compiler and evaluator for toy language of boolean algebra and integer arithmetic, using LR(0) parser}
+          \resumeItem{Language supports type checking, variable declaration, lambda calculus, recursion, and functional programming}
+        \itemListEnd
+
+      \projectHeading
+        {Trafc Density Estimation}
+        {Prof. Rijurekha Sen}
+        {Feb, 2021 - Mar, 2021}
+        \itemListStart{0.2}
+          \resumeItem{Computed queue and dynamic trafc density on a given road by fnding diference in frames using OpenCV in C++}
+          \resumeItem{Used optimizations like background subtraction, changing homography, parallel computation using pthreads}
+          \resumeItem{Reduced computation time on a benchmark video by a maximum of 58.8\% (0.5\% RMS error) and by 25\%(no error)}
+        \itemListEnd
+
+      \projectHeading
+      {MIPS Simulator }
+      {Prof. Preeti Ranjan Panda}
+      {Feb, 2021 - May, 2021}
+      \itemListStart{0.2}
+        \resumeItem{Simulated single cycle multi-core processor that interprets and then executes multiple MIPS programs parallelly}
+        \resumeItem{Used optimizations like background subtraction, changing homography, parallel computation using pthreads}
+        \resumeItem{Implemented non-blocking DRAM timing model, 1st level cache and instruction reordering reducing CPI by 50\%}
+      \itemListEnd
 
         
-    \resumeSubHeadingListEnd
-
+    \listEnd
 
 
 %
 %-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
+  \listStart{0.05}{}
     \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
-     \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
-     \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
-     \textbf{Libraries}{: pandas, NumPy, Matplotlib}
-    }}
- \end{itemize}
+     \textbf{Languages}{: C/C++, Python, Java, SQL (Postgres), SML/NJ, Rust} \\
+     \hspace{1.5em}{Familiar: MIPS(Assembly), VHDL, HTML, CSS, JavaScript, C\#, Prolog, Bash} \\
+     \textbf{Libraries}{: CUDA, MPI, OpenMP, OpenCV, Pytorch, TensorFlow, Sklearn, Pandas, MatplotLib, NumPy, SDL, Yacc, Lex}\\
+     \textbf{Software \& Tools}{:  Unity, Git, LaTeX, Linux, Vivado, QtSpim, Blender, AutoDesk Inventor}\\
+     }}
+  \listEnd
+
+
+%
+%----------Relevant Courses--------------
+\section{Relevant Courses}
+  \itemListStart{0.2}
+  \small{\item{
+  \textbf{Computer Science}{: Virtualization \& Cloud Comput, Natural Language Processing, Operating Systems, 
+    Parallel \& Distributed Programming, Database Management System, Theory Of Computation, Computer Networks, Principles Of Artificial Intelligence,
+    Analysis \& Design Of Algorithms, Data Structures And Algorithms, Computer Architecture, Programming Languages, Design Practices, Discrete Mathematical Structur, 
+    Mini Project, Btech Project, Digital Logic \& System Design}
+  }}
+  \small{\item{
+    \textbf{Matematics \& Other}{: Probability and Stochastic Processes, Signals and Systems,
+    Linear Algebra \& Application, Algebra, Introduction to Calculus, Fundamentals Of Language Sciences, Introduction to Electrical Engineering }
+  }}
+  \listEnd
+
+
+% 
+% -----------PORs-----------
+
+\section{Position of Responsibility}
+\listStart{0.05}{}
+
+\porHeading
+  {Executive}
+  {DevClub}
+  {May, 2022 - Nov, 2022}
+  \itemListStart{0.2}
+    \resumeItem{Organised 3 days long GameJam event in Tryst 2022 as a part of Game Development Club IITD}
+    \resumeItem{Helped in the smooth working of game-dev part of the club and developed multiple PC games using Unity    }
+  \itemListEnd
+
+\porHeading
+  {Student Mentor}
+  {BSW}
+  {July, 2021 - May, 2022}
+  \itemListStart{0.2}
+    \resumeItem{Counseled 5 freshers to acclimatize them with institute activities, ensuring smooth transition into IIT Delhi}
+  \itemListEnd
+\listEnd
 
 
 %-------------------------------------------
